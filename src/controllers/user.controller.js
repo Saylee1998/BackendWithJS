@@ -105,14 +105,14 @@ const loginUser = asyncHandler(async (req, res) => {
     })
     if (!user) throw new ApiError(404, "User does not exists")
 
-    const isPasswordValid = await user.isisPasswordCorrect(password)
+    const isPasswordValid = await user.isPasswordCorrect(password)
     if (!isPasswordValid) throw new ApiError(401, "Invalid user credentials")
 
 
 
     const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user._id)
 
-    const loggedInUser = await User.findById(_id).select("password refreshToken")
+    const loggedInUser = await User.findById(user._id).select("password refreshToken")
 
     //generally cookies can be modified on frontend by default.
     //by setting httpOnly and secure = true cookies are modifiable only by server
@@ -122,8 +122,8 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 
     return res.status(200)
-        .cookies("accessToken", accessToken, options)
-        .cookies("refreshToken", refreshToken, options)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", refreshToken, options)
         .json(
             new ApiResponse(200,
                 {
