@@ -141,8 +141,8 @@ const logoutUser = asyncHandler(async (req, res) => {
     await User.findByIdAndUpdate(
         req.user._id,
         {
-            $set: {
-                refreshToken: undefined
+            $unset: {
+                refreshToken: 1
             }
         }, {
         new: true
@@ -207,7 +207,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
 })
 
-const changePassword = asyncHandler(async (req, res) => {
+const changeCurrentPassword = asyncHandler(async (req, res) => {
     const { oldPassword, newPassword } = req.body
     const user = await User.findById(req.user?._id)
     const isPasswordCorrect = user.isPasswordCorrect(oldPassword)
@@ -420,6 +420,6 @@ const getWatchHistory = asyncHandler(async (req, res) => {
 
 export {
     registerUser, loginUser, logoutUser,
-    refreshAccessToken, changePassword, getCurrentUser,
+    refreshAccessToken, changeCurrentPassword, getCurrentUser,
     updateUserAvatar, updateUserCoverImage, getUserChannelProfile, getWatchHistory
 };
