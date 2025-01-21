@@ -59,6 +59,8 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 }
 
 //methods to generate accesstoken and refreshtoken:
+
+//short lived token
 userSchema.methods.generateAccessToken = function () {
     return jwt.sign({
         _id: this._id,
