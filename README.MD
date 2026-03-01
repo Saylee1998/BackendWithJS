@@ -1,28 +1,134 @@
-## Video Tube
+# VideoTube Backend
 
-#### VideoTube is a comprehensive backend project for a video hosting platform inspired by YouTube. This project has been designed with Node.js, Express.js, and MongoDB as the backend technologies and follows best practices, including JWT authentication, bcrypt for password hashing, and efficient REST API design.
+VideoTube is a backend service for a video hosting platform inspired by YouTube.  
+The system is designed using Node.js, Express.js, and MongoDB, focusing on secure authentication, scalable REST APIs, and efficient media handling.
 
-#### The project supports essential features like user authentication, video uploads, likes/dislikes, comments, subscriptions, and more.
+---
 
-### Features
+## 🚀 Tech Stack
 
-#### Signup & Login: Secure user authentication using bcrypt for password hashing.
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- JWT Authentication (Access & Refresh Tokens)
+- bcrypt password hashing
+- Cloudinary (media storage)
+- REST API design
 
-#### Session Management: JWT-based authentication with Access Tokens and Refresh Tokens for secure and seamless user sessions.
+---
 
-#### Upload Videos and Thumbnails: Videos and thumbnails are stored securely using Cloudinary integration.
+## 🧠 System Overview
 
-#### CRUD Operations: Fetch, update, and delete videos easily.
+The backend provides core functionality for a video platform, including:
 
-#### Like/Dislike System: Users can like or dislike both videos and comments.
-#### Comment System: Add comments to videos and reply to existing comments.
+- User authentication and session management
+- Video upload and metadata management
+- Commenting and engagement features
+- Channel subscription system
+- Secure media storage integration
 
-#### Channel Subscriptions: Users can subscribe and unsubscribe to channels
+The architecture follows modular routing and controller separation to maintain code clarity and scalability.
 
+---
 
+## ✨ Key Features
 
+### 🔐 Authentication & Security
+- Secure signup and login using bcrypt hashing
+- JWT-based access and refresh token flow
+- Protected routes for authenticated operations
 
-#### Model Link:https://app.eraser.io/workspace/sV4hvo1xRKGjGoW49eIR
+### 🎥 Video Management
+- Upload videos and thumbnails via Cloudinary
+- CRUD operations for video resources
+- Metadata handling and retrieval
 
+### 💬 Engagement System
+- Like/dislike functionality for videos and comments
+- Nested comment and reply support
+- Channel subscription management
 
+### ⚙️ API Design
+- RESTful endpoint structure
+- Proper request/response handling
+- Error handling middleware
 
+---
+
+## 📊 Data Modeling
+
+MongoDB collections are structured to support:
+
+- User relationships
+- Video ownership
+- Comment threading
+- Subscription mapping
+
+Entity relationships are designed to support scalable user interaction patterns.
+
+---
+
+## 🏗️ Project Structure
+
+```
+src/
+├── controllers/
+├── models/
+├── routes/
+├── middlewares/
+└── utils/
+```
+
+The codebase follows separation of concerns to improve maintainability and extensibility.
+
+---
+
+## ▶️ Running Locally
+
+### Prerequisites
+
+- Node.js (v16+ recommended)
+- MongoDB instance
+- Cloudinary account
+
+### Setup
+
+```bash
+git clone https://github.com/Saylee1998/BackendWithJS.git
+cd BackendWithJS
+npm install
+```
+
+Create a `.env` file with the following environment variables:
+
+```env
+PORT=
+MONGODB_URI=
+JWT_SECRET=
+JWT_REFRESH_SECRET=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+```
+
+Run the server:
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔍 Future Improvements
+
+- Add automated tests
+- Implement pagination for video feeds
+- Add rate limiting
+- Improve observability and logging
+- Introduce caching layer (Redis)
+
+---
+
+## 👩‍💻 Author
+
+**Saylee Waje**  
